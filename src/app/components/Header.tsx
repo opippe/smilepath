@@ -3,9 +3,9 @@ import { useState } from 'react';
 import avatar from "../../public/images/avatar-placeholder.png";
 import logo from "../../public/images/logo.png";
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { users_data } from '@/api/users';
 
 const Header = () => {
-    const [user, setUser] = useState({ firstName: 'Guilherme', profilePic: avatar });
 
     return (
         <header className="sticky top-0 left-0 w-full z-50 bg-sky-950 shadow-md p-4 flex items-center justify-between">
@@ -36,13 +36,13 @@ const Header = () => {
             {/* User Profile */}
             <div className="flex items-center space-x-2 text-white">
                 <Image
-                    src={user.profilePic}
+                    src={users_data[0].avatar}
                     alt="Profile Picture"
                     width={30}
                     height={30}
                     className="rounded-full"
                 />
-                <span>{user.firstName}</span>
+                <span>{users_data[0].nome}</span>
             </div>
         </header>
     );
