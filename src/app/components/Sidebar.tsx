@@ -1,6 +1,6 @@
 // /app/components/Sidebar.tsx
 import { useRouter } from 'next/router';
-import { HomeIcon, BookOpenIcon, TrophyIcon, ChatBubbleLeftIcon, UserIcon } from '@heroicons/react/24/solid';
+import { HomeIcon, BookOpenIcon, TrophyIcon, ClipboardIcon, UserIcon } from '@heroicons/react/24/solid';
 
 const Sidebar = () => {
     const router = useRouter();
@@ -8,8 +8,8 @@ const Sidebar = () => {
     const navItems = [
         { name: 'Início', path: '/', icon: HomeIcon },
         { name: 'Unidades', path: '/unidades', icon: BookOpenIcon },
+        { name: 'Minha Atividade', path: '/minha_atividade', icon: ClipboardIcon },
         { name: 'Conquistas', path: '/conquistas', icon: TrophyIcon },
-        { name: 'Mensagens', path: '/mensagens', icon: ChatBubbleLeftIcon },
         { name: 'Perfil', path: '/perfil', icon: UserIcon },
     ];
 
