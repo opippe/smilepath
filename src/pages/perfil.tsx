@@ -50,7 +50,7 @@ export default function Perfil() {
                             classNames={{
                                 svg: "w-36 h-36 drop-shadow-md",
                                 indicator: "stroke-teal-500",
-                                track: "stroke-gray/10",
+                                track: "stroke-black/10",
                                 value: "text-3xl font-semibold text-black",
                             }}
                             value={value}

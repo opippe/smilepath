@@ -19,7 +19,7 @@ export default function QuizPage() {
     }
 
     return (
-        <div className="p-5">
+        <div>
             <Atividade quiz={quiz} />
         </div>
     );
