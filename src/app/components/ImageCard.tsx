@@ -1,11 +1,12 @@
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from 'react';
 import { DotButton, useDotButton } from '../components/Carousel/EmblaCarouselDotButton';
 import { ClockIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
 
 
-const ImageCard = (props: { title: string, url: string, time: string | number; }) => {
+const ImageCard = (props: { title: string | null, slug: string, time: string | number; }) => {
     return (
-        <a href={props.url} className="block rounded-lg bg-white shadow-secondary-1 text-surface m-2 drop-shadow-lg h-64 max-w-80 hover:scale-105 transition ease-in-out">
+        <Link href={`/quiz/${props.slug}`} className="block rounded-lg bg-white shadow-secondary-1 text-surface m-2 drop-shadow-lg h-64 max-w-80 hover:scale-105 transition ease-in-out">
             <div className="relative overflow-hidden bg-cover bg-no-repeat h-2/3">
                 <img
                     className="rounded-t-lg h-full w-full object-cover"
@@ -24,7 +25,7 @@ const ImageCard = (props: { title: string, url: string, time: string | number; }
                     </p>
                 </div>
             </div>
-        </a>
+        </Link>
     );
 }
 

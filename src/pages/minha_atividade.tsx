@@ -7,12 +7,12 @@ import ImageCard from "@/app/components/ImageCard";
 
 export default function MinhaAtividade() {
     const [unidades, setUnidades] = useState([
-        { title: 'Anatomia Dental', url: '/unidades', time: '2h' },
-        { title: 'Periodontia', url: '/unidades', time: '1h 45m' },
-        { title: 'Endodontia', url: '/unidades', time: '1h 30m' },
-        { title: 'Prótese Dentária', url: '/unidades', time: '2h 15m' },
-        { title: 'Radiologia Odontológica', url: '/unidades', time: '1h 20m' },
-        { title: 'Ortodontia', url: '/unidades', time: '2h 30m' },
+        { title: 'Anatomia Dental', slug: '/unidades', time: '2h' },
+        { title: 'Periodontia', slug: '/unidades', time: '1h 45m' },
+        { title: 'Endodontia', slug: '/unidades', time: '1h 30m' },
+        { title: 'Prótese Dentária', slug: '/unidades', time: '2h 15m' },
+        { title: 'Radiologia Odontológica', slug: '/unidades', time: '1h 20m' },
+        { title: 'Ortodontia', slug: '/unidades', time: '2h 30m' },
     ]);
 
     const [unidadesConcluidas, setUnidadesConcluidas] = useState([]);
@@ -47,7 +47,7 @@ export default function MinhaAtividade() {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
                                 {unidades.map((unidade) => (
-                                    <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} url={unidade.url} />
+                                    <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} slug={unidade.slug} />
                                 ))}
                             </div>
                         )}
@@ -61,7 +61,7 @@ export default function MinhaAtividade() {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
                                 {unidadesConcluidas.map((unidade) => (
-                                    <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} url={unidade.url} />
+                                    <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} slug={unidade.slug} />
                                 ))}
                             </div>
                         )}
@@ -75,7 +75,7 @@ export default function MinhaAtividade() {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
                                 {atividadesCriadas.map((atividade) => (
-                                    <ImageCard key={atividade.title} title={atividade.title} time={atividade.time} url={atividade.url} />
+                                    <ImageCard key={atividade.title} title={atividade.title} time={atividade.time} slug={atividade.slug} />
                                 ))}
                             </div>
                         )}

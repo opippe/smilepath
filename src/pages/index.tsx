@@ -6,21 +6,21 @@ import { useState } from "react";
 
 export default function Home() {
     const [atividades, setAtividades] = useState([
-        { title: 'Anatomia Dental', url: '/unidades', time: '2h' },
-        { title: 'Periodontia', url: '/unidades', time: '1h 45m' },
-        { title: 'Endodontia', url: '/unidades', time: '1h 30m' },
-        { title: 'Prótese Dentária', url: '/unidades', time: '2h 15m' },
-        { title: 'Radiologia Odontológica', url: '/unidades', time: '1h 20m' },
-        { title: 'Ortodontia', url: '/unidades', time: '2h 30m' },
+        { title: 'Anatomia Dental', slug: 'anatomia_dental', time: '2h' }, 
+        { title: 'Periodontia', slug: 'periodontia', time: '1h 45m' },
+        { title: 'Endodontia', slug: 'endodontia', time: '1h 30m' }, 
+        { title: 'Prótese Dentária', slug: 'protese_dentaria', time: '2h 15m' },
+        { title: 'Radiologia Odontológica', slug: 'radiologia_odontologica', time: '1h 20m' },
+        { title: 'Ortodontia', slug: 'ortodontia', time: '2h 30m' },
     ]);
-
+    
     const [unidades, setUnidades] = useState([
-        { title: 'Anatomia Dental', url: '/unidades', time: '2h' },
-        { title: 'Periodontia', url: '/unidades', time: '1h 45m' },
-        { title: 'Endodontia', url: '/unidades', time: '1h 30m' },
-        { title: 'Prótese Dentária', url: '/unidades', time: '2h 15m' },
-        { title: 'Radiologia Odontológica', url: '/unidades', time: '1h 20m' },
-        { title: 'Ortodontia', url: '/unidades', time: '2h 30m' },
+        { title: 'Anatomia Dental', slug: 'anatomia_dental', time: '2h' },
+        { title: 'Periodontia', slug: 'periodontia', time: '1h 45m' },
+        { title: 'Endodontia', slug: 'endodontia', time: '1h 30m' },
+        { title: 'Prótese Dentária', slug: 'protese_dentaria', time: '2h 15m' },
+        { title: 'Radiologia Odontológica', slug: 'radiologia_odontologica', time: '1h 20m' },
+        { title: 'Ortodontia', slug: 'ortodontia', time: '2h 30m' },
     ]);
 
     const [searchTerm, setSearchTerm] = useState("");  // Search term state
@@ -76,7 +76,7 @@ export default function Home() {
                 {/* Render filtered unidades */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
                     {filteredUnidades.map((unidade) => (
-                        <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} url={unidade.url} />
+                        <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} slug={unidade.slug} />
                     ))}
                 </div>
             </div>

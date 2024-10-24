@@ -10,7 +10,7 @@ import ImageCard from '@/app/components/ImageCard'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
 
 type PropType = {
-    slides: Array<{ title: string, url: string, time: string }>
+    slides: Array<{ title: string, slug: string, time: string }>
     options?: EmblaOptionsType
 }
 
@@ -37,7 +37,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                             {/* Pass the activity data to ImageCard */}
                             <ImageCard 
                                 title={activity.title} 
-                                url={activity.url} 
+                                slug={activity.slug} 
                                 time={activity.time} 
                             />
                         </div>
