@@ -37,6 +37,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                             {/* Pass the activity data to ImageCard */}
                             <ImageCard 
                                 title={activity.title} 
+                                basePath='/quiz'
                                 slug={activity.slug} 
                                 time={activity.time} 
                             />

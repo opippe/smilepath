@@ -1,0 +1,61 @@
+{
+    "unidades": [
+        {
+            "title": "Anatomia Dental",
+            "slug": "anatomia_dental",
+            "time": "2h",
+            "atividades": [
+                { "title": "Introdução à Anatomia Dental", "slug": "intro_anatomia_dental", "time": "30m" },
+                { "title": "Estrutura do Dente", "slug": "estrutura_dente", "time": "45m" },
+                { "title": "Prática de Anatomia", "slug": "pratica_anatomia", "time": "45m" }
+            ]
+        },
+        {
+            "title": "Periodontia",
+            "slug": "periodontia",
+            "time": "1h 45m",
+            "atividades": [
+                { "title": "Fundamentos de Periodontia", "slug": "fundamentos_periodontia", "time": "20m" },
+                { "title": "Doenças Periodontais", "slug": "doencas_periodontais", "time": "35m" },
+                { "title": "Tratamentos", "slug": "tratamentos_periodontais", "time": "50m" }
+            ]
+        },
+        {
+            "title": "Endodontia",
+            "slug": "endodontia",
+            "time": "1h 30m",
+            "atividades": [
+                { "title": "Introdução à Endodontia", "slug": "intro_endodontia", "time": "30m" },
+                { "title": "Instrumentação Endodôntica", "slug": "instrumentacao_endodontica", "time": "1h" }
+            ]
+        },
+        {
+            "title": "Prótese Dentária",
+            "slug": "protese_dentaria",
+            "time": "2h 15m",
+            "atividades": [
+                { "title": "Tipos de Prótese", "slug": "tipos_protese", "time": "40m" },
+                { "title": "Materiais de Prótese", "slug": "materiais_protese", "time": "35m" },
+                { "title": "Procedimentos de Prótese", "slug": "procedimentos_protese", "time": "1h" }
+            ]
+        },
+        {
+            "title": "Radiologia Odontológica",
+            "slug": "radiologia_odontologica",
+            "time": "1h 20m",
+            "atividades": [
+                { "title": "Fundamentos de Radiologia", "slug": "fundamentos_radiologia", "time": "30m" },
+                { "title": "Técnicas Radiográficas", "slug": "tecnicas_radiograficas", "time": "50m" }
+            ]
+        },
+        {
+            "title": "Ortodontia",
+            "slug": "ortodontia",
+            "time": "2h 30m",
+            "atividades": [
+                { "title": "Introdução à Ortodontia", "slug": "intro_ortodontia", "time": "1h" },
+                { "title": "Aparelhos Ortodônticos", "slug": "aparelhos_ortodonticos", "time": "1h 30m" }
+            ]
+        }
+    ]
+}

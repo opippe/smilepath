@@ -1,7 +1,7 @@
 [
     {
-        "slug": "anatomia_dental",
-        "title": "Anatomia Dental",
+        "slug": "intro_anatomia_dental",
+        "title": "Introdução à Anatomia Dental",
         "image": "https://tecdn.b-cdn.net/img/new/slides/041.webp",
         "questions": [
             {
@@ -27,8 +27,8 @@
         ]
     },
     {
-        "slug": "periodontia",
-        "title": "Periodontia",
+        "slug": "estrutura_dente",
+        "title": "Estrutura do Dente",
         "image": "https://tecdn.b-cdn.net/img/new/slides/041.webp",
         "questions": [
             {

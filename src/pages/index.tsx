@@ -1,34 +1,21 @@
+// pages/Home.tsx
+
 import EmblaCarousel from "@/app/components/Carousel/EmblaCarousel";
-import { EmblaOptionsType } from 'embla-carousel'
-import ImageCard from "@/app/components/ImageCard";
+import { EmblaOptionsType } from 'embla-carousel';
+import ExpandableGrid from "@/app/components/ExpandableGrid";
 import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
+import unidadesData from "../api/unidades.json";
 
 export default function Home() {
-    const [atividades, setAtividades] = useState([
-        { title: 'Anatomia Dental', slug: 'anatomia_dental', time: '2h' }, 
-        { title: 'Periodontia', slug: 'periodontia', time: '1h 45m' },
-        { title: 'Endodontia', slug: 'endodontia', time: '1h 30m' }, 
-        { title: 'Prótese Dentária', slug: 'protese_dentaria', time: '2h 15m' },
-        { title: 'Radiologia Odontológica', slug: 'radiologia_odontologica', time: '1h 20m' },
-        { title: 'Ortodontia', slug: 'ortodontia', time: '2h 30m' },
-    ]);
-    
-    const [unidades, setUnidades] = useState([
-        { title: 'Anatomia Dental', slug: 'anatomia_dental', time: '2h' },
-        { title: 'Periodontia', slug: 'periodontia', time: '1h 45m' },
-        { title: 'Endodontia', slug: 'endodontia', time: '1h 30m' },
-        { title: 'Prótese Dentária', slug: 'protese_dentaria', time: '2h 15m' },
-        { title: 'Radiologia Odontológica', slug: 'radiologia_odontologica', time: '1h 20m' },
-        { title: 'Ortodontia', slug: 'ortodontia', time: '2h 30m' },
-    ]);
+    const [searchTerm, setSearchTerm] = useState(""); // Search term state
+    const OPTIONS: EmblaOptionsType = { align: 'start', slidesToScroll: 3 };
 
-    const [searchTerm, setSearchTerm] = useState("");  // Search term state
+    // Flatten all atividades from each unidade for the "Atividades Recentes" section
+    const allAtividades = unidadesData.unidades.flatMap(unidade => unidade.atividades);
 
-    const OPTIONS: EmblaOptionsType = { align: 'start', slidesToScroll: 1 };
-
-    // Filter units based on search query
-    const filteredUnidades = unidades.filter((unidade) => 
+    // Filter unidades based on search query
+    const filteredUnidades = unidadesData.unidades.filter((unidade) =>
         unidade.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -45,8 +32,8 @@ export default function Home() {
                     <input
                         type="text"
                         placeholder="O que você quer aprender hoje?"
-                        value={searchTerm}  // Bind searchTerm state to input value
-                        onChange={(e) => setSearchTerm(e.target.value)}  // Update searchTerm on input change
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                         className="w-full p-2 pl-4 border border-cyan-10 text-black rounded-l-lg focus-visible:rounded-r-none focus:outline-none focus:border focus:border-sky-950"
                     />
                     <button className="bg-sky-950 p-2 rounded-r-lg flex items-center justify-center w-10">
@@ -55,31 +42,30 @@ export default function Home() {
                 </div>
             </div>
             
-            <div className="border-gray-200 border rounded-xl p-5 mb-10">
+            <div className="border-gray-200 border rounded-xl p-5 mb-10 overflow-hidden">
                 <p className="text-lg font-semibold">Atividades Recentes</p>
-                { atividades.length === 0 ? 
-                    (
-                        <div className="flex flex-col items-center">
-                            <p className="mb-4">Parece que você ainda não inicou nenhum atividade. Vamos lá!</p>
-                            <button className="bg-sky-900 text-white text-sm py-2 px-3 rounded-lg">Inicie uma atividade nova</button>
-                        </div>
-                    ) : (
-                        <div className="flex">
-                            <EmblaCarousel slides={atividades} options={OPTIONS} />
-                        </div>
-                    )
-                }
+                {allAtividades.length === 0 ? (
+                    <div className="flex flex-col items-center">
+                        <p className="mb-4">Parece que você ainda não inicou nenhum atividade. Vamos lá!</p>
+                        <button className="bg-sky-900 text-white text-sm py-2 px-3 rounded-lg">Inicie uma atividade nova</button>
+                    </div>
+                ) : (
+                    <div className="flex max-w-full mx-auto overflow-hidden">
+                        <EmblaCarousel slides={allAtividades} options={OPTIONS} />
+                    </div>
+                )}
             </div>
 
-            <div>
-                <p className="text-lg font-semibold mb-5 ml-3">Inicie uma nova unidade</p>
-                {/* Render filtered unidades */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
-                    {filteredUnidades.map((unidade) => (
-                        <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} slug={unidade.slug} />
-                    ))}
-                </div>
-            </div>
+            {/* Use ExpandableGrid component to display unidades */}
+            <ExpandableGrid
+                items={filteredUnidades.map((unidade) => ({
+                    title: unidade.title,
+                    slug: unidade.slug,
+                    time: unidade.time,
+                    basePath: "/unidades" // Set base path to "/unidades"
+                }))}
+                itemsPerRow={5}
+            />
         </div>
     );
 }

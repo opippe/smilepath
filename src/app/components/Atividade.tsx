@@ -31,8 +31,8 @@ export default function Atividade({ quiz }: AtividadeProps) {
     const [score, setScore] = useState(0);
     const [quizFinished, setQuizFinished] = useState(false);
 
-    const [isCorrectModalVisible, setCorrectModalVisible] = useState(false);  // Correct answer modal state
-    const [isWrongModalVisible, setWrongModalVisible] = useState(false);      // Wrong answer modal state
+    const [isCorrectModalVisible, setCorrectModalVisible] = useState(false);
+    const [isWrongModalVisible, setWrongModalVisible] = useState(false);
 
     const currentQuestion = quiz.questions[currentQuestionIndex];
 
@@ -108,7 +108,7 @@ export default function Atividade({ quiz }: AtividadeProps) {
         <div>
             <div className="flex border-black-900 border-b pb-2 mb-2 relative ">
                 <BookOpenIcon className="w-5 h-5" />
-                <p className="text-black ml-6 absolute bottom-1.5">Minha Atividade</p>
+                <p className="text-black ml-6 absolute bottom-1.5">{quiz.title}</p>
 
                 <div className="text-right absolute right-0 bottom-1.5">
                     <button
