@@ -1,22 +1,35 @@
 import { ClipboardIcon } from "@heroicons/react/24/solid";
-import not_found from '../public/images/not-found.png'
+import not_found from '../public/images/not-found.png';
 import Image from "next/image";
 import { Tab, Tabs } from "@nextui-org/tabs";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ImageCard from "@/app/components/ImageCard";
+import unidadesData from "../api/unidades.json"; // Import the JSON data
+
+// Define the type for Unidade and Atividade
+interface Atividade {
+    title: string;
+    slug: string;
+    time: string;
+}
+
+interface Unidade {
+    title: string;
+    slug: string;
+    time: string;
+    atividades: Atividade[];
+}
 
 export default function MinhaAtividade() {
-    const [unidades, setUnidades] = useState([
-        { title: 'Anatomia Dental', slug: '/unidades', time: '2h' },
-        { title: 'Periodontia', slug: '/unidades', time: '1h 45m' },
-        { title: 'Endodontia', slug: '/unidades', time: '1h 30m' },
-        { title: 'Prótese Dentária', slug: '/unidades', time: '2h 15m' },
-        { title: 'Radiologia Odontológica', slug: '/unidades', time: '1h 20m' },
-        { title: 'Ortodontia', slug: '/unidades', time: '2h 30m' },
-    ]);
+    const [unidades, setUnidades] = useState<Unidade[]>([]); // Set type for unidades
+    const [unidadesConcluidas, setUnidadesConcluidas] = useState<Unidade[]>([]); // Set type for unidadesConcluidas
+    const [atividadesCriadas, setAtividadesCriadas] = useState<Atividade[]>([]); // Set type for atividadesCriadas
 
-    const [unidadesConcluidas, setUnidadesConcluidas] = useState([]);
-    const [atividadesCriadas, setAtividadesCriadas] = useState([]);
+    // Load data from unidades.json into state on component mount
+    useEffect(() => {
+        setUnidades(unidadesData.unidades);
+        // Mock setup for unidadesConcluidas and atividadesCriadas if needed in the future
+    }, []);
 
     return (
         <div>
@@ -37,6 +50,7 @@ export default function MinhaAtividade() {
                         tabContent: "group-data-[selected=true]:text-sky-500 group-data-[selected=true]:border-b-3 border-sky-500 ease-linear duration-100"
                     }}
                 >
+                    {/* Tab for "Em Progresso" */}
                     <Tab key="em_progresso" title={<div className="flex items-center space-x-2"><span>Em Progresso</span></div>}>
                         {unidades.length === 0 ? (
                             <div className="flex flex-col justify-center items-center space-y-5">
@@ -47,11 +61,19 @@ export default function MinhaAtividade() {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
                                 {unidades.map((unidade) => (
-                                    <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} slug={unidade.slug} />
+                                    <ImageCard
+                                        key={unidade.title}
+                                        title={unidade.title}
+                                        time={unidade.time}
+                                        slug={unidade.slug}
+                                        basePath="/unidades"
+                                    />
                                 ))}
                             </div>
                         )}
                     </Tab>
+
+                    {/* Tab for "Concluídas" */}
                     <Tab key="concluidas" title={<div className="flex items-center space-x-2"><span>Concluídas</span></div>}>
                         {unidadesConcluidas.length === 0 ? (
                             <div className="flex flex-col justify-center items-center space-y-5">
@@ -61,11 +83,19 @@ export default function MinhaAtividade() {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
                                 {unidadesConcluidas.map((unidade) => (
-                                    <ImageCard key={unidade.title} title={unidade.title} time={unidade.time} slug={unidade.slug} />
+                                    <ImageCard
+                                        key={unidade.title}
+                                        title={unidade.title}
+                                        time={unidade.time}
+                                        slug={unidade.slug}
+                                        basePath="/unidades"
+                                    />
                                 ))}
                             </div>
                         )}
                     </Tab>
+
+                    {/* Tab for "Criadas" */}
                     <Tab key="criadas" title={<div className="flex items-center space-x-2"><span>Criadas</span></div>}>
                         {atividadesCriadas.length === 0 ? (
                             <div className="flex flex-col justify-center items-center space-y-5">
@@ -75,7 +105,13 @@ export default function MinhaAtividade() {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
                                 {atividadesCriadas.map((atividade) => (
-                                    <ImageCard key={atividade.title} title={atividade.title} time={atividade.time} slug={atividade.slug} />
+                                    <ImageCard
+                                        key={atividade.title}
+                                        title={atividade.title}
+                                        time={atividade.time}
+                                        slug={atividade.slug}
+                                        basePath="/unidades"
+                                    />
                                 ))}
                             </div>
                         )}

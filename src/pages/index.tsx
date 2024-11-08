@@ -3,9 +3,10 @@
 import EmblaCarousel from "@/app/components/Carousel/EmblaCarousel";
 import { EmblaOptionsType } from 'embla-carousel';
 import ExpandableGrid from "@/app/components/ExpandableGrid";
-import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { HomeIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import unidadesData from "../api/unidades.json";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@nextui-org/modal';
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState(""); // Search term state
@@ -19,15 +20,23 @@ export default function Home() {
         unidade.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const [userRole, setUserRole] = useState("professor"); // MOCK AUTENTICAÇÃO
+
+    const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
+
     return (
         <div>
             <div className="flex border-black-900 border-b pb-2 mb-2">
                 <HomeIcon className="w-5 h-5"/>
                 <p className="text-black ml-1">Início</p>
+                {userRole === "professor" && <button onClick={() => setIsCreateModalVisible(true)} className="ml-auto bg-sky-900 px-2 py-1 text-white text-sm rounded-lg flex items-center">Crie algo novo<SparklesIcon className="h-4 w-4 ml-1" /></button>}
             </div>
             <p className="text-lg font-semibold">Bom dia, Guilherme!</p>
             <div className="flex flex-col items-center my-10">
-                <h1 className="text-2xl font-bold mb-4">O que você quer aprender hoje?</h1>
+                {userRole === "aluno" 
+                    ? (<h1 className="text-2xl font-bold mb-4">O que você quer aprender hoje?</h1>)
+                    : (<h1 className="text-2xl font-bold mb-4">O que você quer ensinar hoje?</h1>) 
+                }
                 <div className="flex w-2/3">
                     <input
                         type="text"
@@ -50,9 +59,7 @@ export default function Home() {
                         <button className="bg-sky-900 text-white text-sm py-2 px-3 rounded-lg">Inicie uma atividade nova</button>
                     </div>
                 ) : (
-                    <div className="flex max-w-full mx-auto overflow-hidden">
-                        <EmblaCarousel slides={allAtividades} options={OPTIONS} />
-                    </div>
+                    <EmblaCarousel slides={allAtividades} options={OPTIONS} />
                 )}
             </div>
 
@@ -65,7 +72,32 @@ export default function Home() {
                     basePath: "/unidades" // Set base path to "/unidades"
                 }))}
                 itemsPerRow={5}
-            />
+                />
+
+                {userRole === "professor" && 
+                    (<Modal
+                        isOpen={isCreateModalVisible}
+                        // onClose={goToNextQuestion}
+                        placement='center'
+                        className="rounded-lg"
+                        classNames={{
+                            backdrop: "bg-black/50"
+                        }}
+                    >
+                        <ModalContent className="w-full max-w-md h-80" style={{ marginTop: '-4rem' }}>
+                            <ModalHeader className='bg-teal-500 p-2 rounded-tl-lg rounded-tr-lg'>
+                                <h1 className="text-white text-xl">O que vamos criar hoje?</h1>
+                            </ModalHeader>
+                            <ModalBody className='bg-white px-4 pt-4 pb-10'>
+                                <p>aa</p>
+                            </ModalBody>
+                            <ModalFooter className='bg-white rounded-bl-lg rounded-br-lg p-4'>
+                                <p>aa</p>
+                            </ModalFooter>
+                        </ModalContent>
+                    </Modal>)
+                }
         </div>
+
     );
 }

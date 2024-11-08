@@ -70,7 +70,7 @@
 }
 
 .embla__slide {
-    min-width: 0;
+    max-width: 23rem;
     flex: 0 0 var(--slide-size);
     padding-left: var(--slide-spacing);
 }

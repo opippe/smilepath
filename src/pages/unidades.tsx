@@ -20,13 +20,13 @@ export default function Unidades() {
 
             <div>
                 <ExpandableGrid
-                items={unidadesData.unidades.map((unidade) => ({
-                    ...unidade,
-                    basePath: "/unidades",
-                    onClick: () => handleCardClick(unidade.slug),
-                }))}
-                itemsPerRow={5}
-            />
+                    items={unidadesData.unidades.map((unidade) => ({
+                        ...unidade,
+                        basePath: "/unidades",
+                        onClick: () => handleCardClick(unidade.slug),
+                    }))}
+                    itemsPerRow={5}
+                />
             </div>
         </div>
     );

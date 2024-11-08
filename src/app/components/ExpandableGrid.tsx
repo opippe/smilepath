@@ -36,7 +36,7 @@ export default function ExpandableGrid({ items, itemsPerRow = 5 }: ExpandableGri
                     transition: "max-height 0.3s ease-in-out",
                 }}
             >
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full mt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full mt-10 pb-4">
                     {visibleItems.map((item) => (
                         <ImageCard key={item.slug} title={item.title} time={item.time} basePath={item.basePath} slug={item.slug} />
                     ))}

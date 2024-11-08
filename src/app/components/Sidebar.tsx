@@ -9,7 +9,7 @@ const Sidebar = () => {
         { name: 'Início', path: '/', icon: HomeIcon },
         { name: 'Unidades', path: '/unidades', icon: BookOpenIcon },
         { name: 'Minha Atividade', path: '/minha_atividade', icon: ClipboardIcon },
-        { name: 'Conquistas', path: '/conquistas', icon: TrophyIcon },
+        // { name: 'Conquistas', path: '/conquistas', icon: TrophyIcon },
         { name: 'Perfil', path: '/perfil', icon: UserIcon },
     ];
 
