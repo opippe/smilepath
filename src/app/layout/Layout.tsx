@@ -5,7 +5,7 @@ import '../styles/embla.css'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="h-screen">
+        <div>
             <Header />
 
             <div className="flex">
